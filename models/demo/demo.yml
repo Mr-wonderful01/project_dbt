@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: employee
+    description: "DBT model for employee table"
+    columns:
+      - name: emp_id
+        tests:
+          - unique
+          - not_null
+          - accepted_values:
+              values: ['101', '102', '103', '104', '105', '106', '107', '108', '109', '110']
+              config:
+                severity: warn
+    
+
+sources:
+  - name: emp_data
+    database: DEMO
+    schema: DBT_RMISHRA
+    tables:
+      - name: EMPLOYEE_RAW
